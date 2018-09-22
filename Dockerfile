@@ -2,6 +2,12 @@
 
 # STEP 1 build executable binary
 FROM golang:alpine as builder
+
+# BUILD_DATE and VCS_REF are immaterial, since this is a 2-stage build, but our build
+# hook won't work unless we specify the args
+ARG BUILD_DATE
+ARG VCS_REF
+
 # Install SSL ca certificates
 RUN apk update && apk add git && apk add ca-certificates
 # Create appuser
