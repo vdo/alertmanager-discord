@@ -71,7 +71,7 @@ func main() {
 
 		Content := "```"
 		if amo.CommonAnnotations.Summary != "" {
-			Content = fmt.Sprintf(" === %s === \n```", amo.CommonAnnotations.Summary)
+			Content = fmt.Sprintf("___%s___ \n```", amo.CommonAnnotations.Summary)
 		}
 
 		for _, alert := range amo.Alerts {
