@@ -71,7 +71,7 @@ func main() {
 	
 		emoji := "bell"	
 		// Let's have a nice emoji
-		if strings.ToUpper(amo.Status) == "firing" {
+		if strings.ToUpper(amo.Status) == "FIRING" {
 			emoji = ":fire:"
 		} else {
 			emoji = ":beer:"
@@ -79,7 +79,7 @@ func main() {
 
 		Content := "```"
 		if amo.CommonAnnotations.Summary != "" {
-			Content = fmt.Sprintf("__                                                                                                                __\n%s %s\n```", emoji, amo.CommonAnnotations.Summary)
+			Content = fmt.Sprintf("%s %s\n```", emoji, amo.CommonAnnotations.Summary)
 		}
 
 		for _, alert := range amo.Alerts {
