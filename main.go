@@ -68,10 +68,18 @@ func main() {
 		DO := discordOut{
 			Name: amo.Status,
 		}
+	
+		emoji := "bell"	
+		// Let's have a nice emoji
+		if strings.ToUpper(amo.Status) == "firing" {
+			emoji = ":fire:"
+		} else {
+			emoji = ":beer:"
+		}
 
 		Content := "```"
 		if amo.CommonAnnotations.Summary != "" {
-			Content = fmt.Sprintf("___%s___ \n```", amo.CommonAnnotations.Summary)
+			Content = fmt.Sprintf("__                                                                                                                __\n%s %s\n```", emoji, amo.CommonAnnotations.Summary)
 		}
 
 		for _, alert := range amo.Alerts {
