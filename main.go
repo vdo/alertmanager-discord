@@ -72,9 +72,9 @@ func main() {
 		emoji := "bell"	
 		// Let's have a nice emoji
 		if strings.ToUpper(amo.Status) == "FIRING" {
-			emoji = ":fire:"
+			emoji = ":airplane_arriving: :fire:"
 		} else {
-			emoji = ":beer:"
+			emoji = ":wine_glass: :cheese:"
 		}
 
 		Content := "```"
