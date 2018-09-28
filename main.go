@@ -79,7 +79,7 @@ func main() {
 
 		Content := "```"
 		if amo.CommonAnnotations.Summary != "" {
-			Content = fmt.Sprintf("%s %s\n```", emoji, amo.CommonAnnotations.Summary)
+			Content = fmt.Sprintf("%s %s\n```\n", emoji, amo.CommonAnnotations.Summary)
 		}
 
 		for _, alert := range amo.Alerts {
