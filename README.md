@@ -1,11 +1,4 @@
-[cookbookurl]: https://geek-cookbook.funkypenguin.co.nz
-[kitchenurl]: https://discourse.kitchen.funkypenguin.co.nz
-[discordurl]: http://chat.funkypenguin.co.nz
-[patreonurl]: https://patreon.com/funkypenguin
-[blogurl]: https://www.funkypenguin.co.nz
-[hub]: https://hub.docker.com/r/funkypenguin/alertmanager-discord/
-
-[![geek-cookbook](https://raw.githubusercontent.com/funkypenguin/www.funkypenguin.co.nz/master/images/geek-kitchen-banner.png)][cookbookurl]
+This is a fork to add an optional header to the alerts
 
 # Contents
 
@@ -15,36 +8,34 @@
 4. [CHANGELOG](#changelog)
 5. [Upstream-readme](#Upstream-README)
 
-
 ---
 
 This container is maintained by [Funky Penguin's Geek Cookbook][cookbookurl], a collection of "recipes" to run popular applications
 on Docker Swarm or Kubernetes, in a cheeky, geek format.
 
 Got more details at:
-* ![Discourse with us!](https://img.shields.io/discourse/https/discourse.geek-kitchen.funkypenguin.co.nz/topics.svg) [Forums][kitchenurl]
-* ![Chat with us!](https://img.shields.io/discord/396055506072109067.svg) [Friendly Discord Chat][discordurl]
-* ![Geek out with us!](https://img.shields.io/badge/recipies-35+-brightgreen.svg) [Funky Penguin's Geek Cookbook][cookbookurl]
-* ![Thank YOU](https://img.shields.io/badge/thank-you-brightgreen.svg) [Patreon][patreonurl]
-* ![Read blog!](https://img.shields.io/badge/read-blog-brightgreen.svg) [Blog][blogurl]
+
+- ![Discourse with us!](https://img.shields.io/discourse/https/discourse.geek-kitchen.funkypenguin.co.nz/topics.svg) [Forums][kitchenurl]
+- ![Chat with us!](https://img.shields.io/discord/396055506072109067.svg) [Friendly Discord Chat][discordurl]
+- ![Geek out with us!](https://img.shields.io/badge/recipies-35+-brightgreen.svg) [Funky Penguin's Geek Cookbook][cookbookurl]
+- ![Thank YOU](https://img.shields.io/badge/thank-you-brightgreen.svg) [Patreon][patreonurl]
+- ![Read blog!](https://img.shields.io/badge/read-blog-brightgreen.svg) [Blog][blogurl]
 
 ---
 
 # What is funkypenguin/alertmanager-discord ?
 
-
 # Why should I use this?
-
 
 # How do I use this?
 
 # CHANGELOG
+
 ---
 
 # Upstream README
 
-alertmanager-discord
-===
+# alertmanager-discord
 
 Give this a webhook (with the DISCORD_WEBHOOK environment variable) and point it as a webhook on alertmanager, and it will post your alerts into a discord channel for you as they trigger:
 
@@ -61,7 +52,7 @@ global:
   smtp_auth_password: 'password'
 
 # The directory from which notification templates are read.
-templates: 
+templates:
 - '/etc/alertmanager/template/*.tmpl'
 
 # The root route on which each incoming alert enters.
@@ -69,7 +60,7 @@ route:
   group_by: ['alertname']
   group_wait: 20s
   group_interval: 5m
-  repeat_interval: 3h 
+  repeat_interval: 3h
   receiver: discord_webhook
 
 receivers:
@@ -77,6 +68,3 @@ receivers:
   webhook_configs:
   - url: 'http://localhost:9094'
 ```
-
-
-

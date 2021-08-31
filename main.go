@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-        "os"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func main() {
 	webhookUrl := os.Getenv("DISCORD_WEBHOOK")
 	if webhookUrl == "" {
 		fmt.Fprintf(os.Stderr, "error: environment variable DISCORD_WEBHOOK not found\n")
-        	os.Exit(1)
+		os.Exit(1)
 	}
 	whURL := flag.String("webhook.url", webhookUrl, "")
 	flag.Parse()
@@ -68,8 +68,8 @@ func main() {
 		DO := discordOut{
 			Name: amo.Status,
 		}
-	
-		emoji := "bell"	
+
+		emoji := "bell"
 		// Let's have a nice emoji
 		if strings.ToUpper(amo.Status) == "FIRING" {
 			emoji = ":airplane_arriving: :fire:"
@@ -78,8 +78,14 @@ func main() {
 		}
 
 		Content := "```"
+		header := os.Getenv("DISCORD_HEADER")
+
 		if amo.CommonAnnotations.Summary != "" {
 			Content = fmt.Sprintf("%s %s\n```\n", emoji, amo.CommonAnnotations.Summary)
+		}
+		// Add optional header text
+		if header != "" {
+			Content = fmt.Sprintf("%s\n", header) + Content
 		}
 
 		for _, alert := range amo.Alerts {
